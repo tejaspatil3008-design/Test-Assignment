@@ -1,0 +1,32 @@
+<div class="employee-container">
+  <h2 class="page-title mb-4">
+    <i class="bi bi-people-fill me-2"></i> Employee Details
+  </h2>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input class="form-control" formControlName="name" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input class="form-control" formControlName="emailId" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mobile</label>
+      <input class="form-control" formControlName="mobile" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Country</label>
+      <input class="form-control" formControlName="country" />
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-add">Update</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

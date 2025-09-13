@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Add Employee</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="emailId" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mobile</label>
+      <input type="text" class="form-control" formControlName="mobile" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Country</label>
+      <select class="form-select" formControlName="country">
+        <option value="">Select Country</option>
+        <option *ngFor="let cou of countries" [value]="cou.country">{{ cou.country }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </form>
+</div>
