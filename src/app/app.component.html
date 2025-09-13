@@ -1,0 +1,102 @@
+<!--  showing employee counrty -->
+
+ <div class="filter-left">
+  <div>
+    <label for="endDate">Select Country</label>
+    <select class="form-control">
+      <option value="" selected>--All--</option>
+      <option *ngFor="let country of storeCountryData" [value]="country.country">
+        {{ country.country }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<br />
+
+<!--  showing Employee List -->
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>View</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Country</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let emp of employeeListData">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.mobile }}</td>
+        <td>{{ emp.country }}</td>
+        <td>
+          <button  (click)="onEdit(emp)">
+            Edit
+          </button>
+          <button  (click)="onDelete(emp.id!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr />
+
+<!-- shwoing Employee Form to add or update employee -->
+ 
+<h3>{{ selectedEmployee ? 'Edit Employee' : 'Add Employee' }}</h3>
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Name</label>
+    <input formControlName="name" class="form-control" />
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input formControlName="email" class="form-control" />
+  </div>
+
+  <div>
+    <label>Mobile</label>
+    <input formControlName="mobile" class="form-control" />
+  </div>
+
+  <div>
+    <label>Country</label>
+    <select formControlName="country" class="form-control">
+      <option value="" disabled>Select Country</option>
+      <option *ngFor="let country of storeCountryData" [value]="country.country">
+        {{ country.country }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label>State</label>
+    <input formControlName="state" class="form-control" />
+  </div>
+
+  <div>
+    <label>District</label>
+    <input formControlName="district" class="form-control" />
+  </div>
+
+  <br />
+
+  <button type="submit"  [disabled]="employeeForm.invalid">
+    {{ selectedEmployee ? 'Update' : 'Save' }}
+  </button>
+  <button type="button"  (click)="resetForm()">
+    Reset
+  </button>
+</form>
+
